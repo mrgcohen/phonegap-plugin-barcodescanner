@@ -545,6 +545,12 @@ parentViewController:(UIViewController*)parentViewController
         if (supportedFormats == nil || [supportedFormats containsObject:[self formatStringFrom:BarcodeFormat_QR_CODE]]) {
             decodeHints.addFormat(BarcodeFormat_QR_CODE);
         }
+        if (supportedFormats == nil || [supportedFormats containsObject:[self formatStringFrom:BarcodeFormat_CODABAR]]) {
+            decodeHints.addFormat(BarcodeFormat_CODABAR);
+        }
+        if (supportedFormats == nil || [supportedFormats containsObject:[self formatStringFrom:BarcodeFormat_CODABAR]]) {
+            decodeHints.addFormat(BarcodeFormat_CODABAR);
+        }
         if (supportedFormats == nil || [supportedFormats containsObject:[self formatStringFrom:BarcodeFormat_CODE_128]]) {
             decodeHints.addFormat(BarcodeFormat_CODE_128);
         }
@@ -613,6 +619,7 @@ parentViewController:(UIViewController*)parentViewController
 // convert barcode format to string
 //--------------------------------------------------------------------------
 - (NSString*)formatStringFrom:(zxing::BarcodeFormat)format {
+    if (format == zxing::BarcodeFormat_CODABAR)      return @"CODABAR";
     if (format == zxing::BarcodeFormat_QR_CODE)      return @"QR_CODE";
     if (format == zxing::BarcodeFormat_DATA_MATRIX)  return @"DATA_MATRIX";
     if (format == zxing::BarcodeFormat_UPC_E)        return @"UPC_E";
